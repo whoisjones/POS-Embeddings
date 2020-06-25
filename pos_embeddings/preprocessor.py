@@ -12,6 +12,7 @@ def preprocess(path, model='spacy'):
     sentences = list(filter(None, sentences))
 
     if model=='spacy':
+        spacy.prefer_gpu()
         nlp = spacy.load("en_core_web_sm")
         tag_spacy(sentences, nlp)
     elif model=='flair':
