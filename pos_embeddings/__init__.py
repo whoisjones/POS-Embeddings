@@ -9,9 +9,9 @@ DATA_INFO = [
             ]
 
 TAG_CLUSTERING = {
-                    'NN':['NN', 'NNS', 'NR', 'NRS', 'NP', 'NPS'],
+                    'NN':['NN', 'NNS', 'NR', 'NRS', 'NP', 'NPS', 'NNP', 'NNPS'],
                     'VB':['VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ'],
                     'JJ':['JJ', 'JJR', 'JJS', 'JJT'],
-                    'PN':['PN', 'PP', 'PPL', 'PPLS', 'PPO', 'PPS', 'PPSS'],
-                    'RB':['RB','RBR', 'RBT', 'RN', 'RP']
+                    'RB':['RB','RBR', 'RBT', 'RN', 'RP', 'RBS']
+                    #'PN':['PN', 'PP', 'PPL', 'PPLS', 'PPO', 'PPS', 'PPSS']
                  }
