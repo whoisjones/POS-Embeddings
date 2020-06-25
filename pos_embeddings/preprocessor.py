@@ -37,8 +37,8 @@ def tag_spacy(sentences, tagger):
             output.write(str_sent)
             output.write("\n")
             output.write("\n")
-            print(str_sent)
-            print("sentence {} tagged.".format(idx))
+            if idx % 1000 == 0:
+                print("sentence nr {} tagged.".format(idx))
     print("done")
 
 
@@ -59,6 +59,6 @@ def tag_flair(sentences, tagger):
             output.write(str_sent)
             output.write("\n")
             output.write("\n")
-            print(str_sent)
-            print("sentence {} tagged.".format(idx))
+            if idx % 1000 == 0:
+                print("sentence nr {} tagged.".format(idx))
     print("done")
