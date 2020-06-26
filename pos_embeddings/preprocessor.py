@@ -25,9 +25,13 @@ def preprocess(path, model='spacy'):
 def tag_spacy(sentences, tagger):
     outfile = Path(DATA_DIR) / "spacy_tagged_wikipedia.txt"
     list = []
-    for sentence in sentences:
+    print("starts tagging...")
+    for idx, sentence in enumerate(sentences):
         doc = tagger(sentence)
         list.append(format_text_spacy(doc))
+        if idx % 10000 == 0:
+            print(idx)
+    print("tagging finished. start writing.")
     with open(outfile, "w") as output:
         output.write("\n".join(list))
     print("done")
