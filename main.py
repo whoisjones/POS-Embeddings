@@ -16,14 +16,6 @@ def main():
         help="Use tiny dataset for test purposes"
     )
 
-    parser.add_argument(
-        "--cluster-tags",
-        "-c",
-        required=False,
-        action="store_true",
-        help="Use tiny dataset for test purposes"
-    )
-
     args = parser.parse_args()
 
     for name, url in DATA_INFO:
@@ -32,7 +24,7 @@ def main():
             txt_file_path = Path(DATA_DIR) / 'tiny-wiki.txt'
         else:
             txt_file_path = downloader.download(path=path, download_url=url, return_txt_path=True)
-        preprocessor.preprocess(txt_file_path, cluster_tags=args.cluster_tags)
+        preprocessor.preprocess(txt_file_path)
         print(datetime.now() - startTime)
 
 if __name__ == "__main__":
