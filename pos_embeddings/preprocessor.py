@@ -7,9 +7,9 @@ from pathlib import Path
 def preprocess(path, cluster_tags, model='spacy'):
 
     with open(path, 'r') as f:
-        sentences = f.read().rstrip()
+        sentences = f.read().splitlines()
 
-    #sentences = list(filter(None, sentences))
+    sentences = list(filter(None, sentences))
 
     if model=='spacy':
         spacy.prefer_gpu()
@@ -25,21 +25,23 @@ def preprocess(path, cluster_tags, model='spacy'):
 def tag_spacy(sentences, tagger, cluster_tags):
     outfile = Path(DATA_DIR) / "tagged_wikipedia.txt"
     with open(outfile, "w") as output:
-        str_sent = ""
-        doc = tagger(sentences)
-        for token in doc:
-            str_sent = str_sent + "{}_{} ".format(token.text, token.tag_)
-        output.write(str_sent)
+        for sentence in sentences:
+            str_sent = ""
+            doc = tagger(sentence)
+            for token in doc:
+                str_sent = str_sent + "{}_{} ".format(token.text, token.tag_)
+            output.write(str_sent + '\n')
     print("done")
 
 
 def tag_flair(sentences, tagger, cluster_tags):
     outfile = Path(DATA_DIR) / "tagged_wikipedia.txt"
     with open(outfile, "w") as output:
+        for sentence in sentences:
             str_sent = ""
-            sent = Sentence(sentences)
+            sent = Sentence(sentence)
             tagger.predict(sent, mini_batch_size=64)
             for token in sent:
                 str_sent = str_sent + "{}_{} ".format(token.text, token.get_labels('pos')[0].value)
-            output.write(str_sent)
+            output.write(str_sent + '\n')
     print("done")
