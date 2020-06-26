@@ -23,7 +23,7 @@ def preprocess(path, model='spacy'):
 
 
 def tag_spacy(sentences, tagger):
-    outfile = Path(DATA_DIR) / "tagged_wikipedia.txt"
+    outfile = Path(DATA_DIR) / "spacy_tagged_wikipedia.txt"
     list = []
     for sentence in sentences:
         doc = tagger(sentence)
@@ -41,7 +41,7 @@ def format_text_spacy(sentence):
 
 def tag_flair(sentences, tagger):
     list = [Sentence(elem) for elem in sentences]
-    outfile = Path(DATA_DIR) / "tagged_wikipedia.txt"
+    outfile = Path(DATA_DIR) / "flair_tagged_wikipedia.txt"
     tagger.predict(list, mini_batch_size=64)
     list = [format_text_flair(elem) for elem in list]
     with open(outfile, "w") as output:
