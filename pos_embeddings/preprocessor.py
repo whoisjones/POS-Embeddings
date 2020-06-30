@@ -12,7 +12,7 @@ def preprocess(path, model='spacy'):
     sentences = list(filter(None, sentences))
 
     if model=='spacy':
-        spacy.prefer_gpu()
+        spacy.require_gpu()
         nlp = spacy.load("en_core_web_sm")
         tag_spacy(sentences, nlp)
     elif model=='flair':
@@ -24,16 +24,14 @@ def preprocess(path, model='spacy'):
 
 def tag_spacy(sentences, tagger):
     outfile = Path(DATA_DIR) / "spacy_tagged_wikipedia.txt"
-    list = []
     print("starts tagging...")
-    for idx, sentence in enumerate(sentences):
-        doc = tagger(sentence)
-        list.append(format_text_spacy(doc))
-        if idx % 10000 == 0:
-            print(idx)
-    print("tagging finished. start writing.")
     with open(outfile, "w") as output:
-        output.write("\n".join(list))
+        for idx, sentence in enumerate(sentences):
+            doc = tagger(sentence)
+            output.write(format_text_spacy(doc))
+            output.write("\n")
+            if idx % 10000 == 0:
+                print(idx)
     print("done")
 
 def format_text_spacy(sentence):
