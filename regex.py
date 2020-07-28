@@ -64,7 +64,7 @@ def main():
         text = text.replace("_``", "_REST")
         text = text.replace("_$", "_REST")
 
-    with open("masked_tags.txt", "w") as out:
+    with open("resources/en-wikipedia.tokenized.spacy-grouped.txt'", "w") as out:
         out.write(text)
 
 if __name__ == "__main__":
