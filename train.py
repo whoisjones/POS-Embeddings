@@ -14,7 +14,7 @@ class MySentences(object):
 def train():
     for method in ["cbow", "skipgram"]:
         for dim in [25, 100]:
-            model = fasttext.train_unsupervised("resources/en-wikipedia.tokenized.spacy-grouped.txt'", method, maxn=0, min_count=50, dim=dim)
+            model = fasttext.train_unsupervised("resources/en-wikipedia.tokenized.spacy-grouped.txt", method, maxn=0, min_count=50, dim=dim)
             model.save_model(f"resources/POStagged_{method}_{dim}dim.bin")
 
             POSsentences = MySentences("resources", "en-wikipedia.tokenized.spacy-grouped.txt")
