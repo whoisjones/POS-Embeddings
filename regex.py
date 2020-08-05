@@ -1,6 +1,6 @@
 
 def main():
-    with open("resources/spacy_tagged_wikipedia.txt", "r") as file:
+    with open("resources/test/spacy_tagged_wikipedia.txt", "r") as file:
         text = file.read()
 
         # proper nouns
