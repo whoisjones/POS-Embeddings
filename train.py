@@ -17,7 +17,7 @@ def train():
             model = fasttext.train_unsupervised("resources/en-wikipedia.tokenized.spacy-grouped.txt'", method, maxn=0, min_count=50, dim=dim)
             model.save_model(f"resources/POStagged_{method}_{dim}dim.bin")
 
-            POSsentences = MySentences("resources", "en-wikipedia.tokenized.spacy-grouped.txt'")
+            POSsentences = MySentences("resources", "en-wikipedia.tokenized.spacy-grouped.txt")
             model = Word2Vec(POSsentences,
                              size=dim,
                              window=10 if method == "skipgram" else 5,
