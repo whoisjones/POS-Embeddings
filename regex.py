@@ -13,11 +13,11 @@ def main():
 
         # verbs
         text = text.replace("_vb", "_V")
-        text = text.replace("_vd", "_V")
-        text = text.replace("_vg", "_V")
-        text = text.replace("_vn", "_V")
-        text = text.replace("_vp", "_V")
-        text = text.replace("_vz", "_V")
+        text = text.replace("_vbd", "_V")
+        text = text.replace("_vbg", "_V")
+        text = text.replace("_vbn", "_V")
+        text = text.replace("_vbp", "_V")
+        text = text.replace("_vbz", "_V")
 
         # rest
         text = text.replace("_add", "_REST")
